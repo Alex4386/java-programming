@@ -21,8 +21,7 @@ jobs:
         cache: 'maven'
     - name: change version to SNAPSHOT
       run: |
-        VER_TAG=$(git describe --tags --abbrev=0)
-        test -z "$VER_TAG" && VER_TAG="0.0.1"
+        VER_TAG=$(git describe --tags --abbrev=0) || VER_TAG="0.0.1"
         mvn versions:set -DnewVersion=${VER_TAG}-SNAPSHOT
     - name: Build with Maven
       run: mvn package
