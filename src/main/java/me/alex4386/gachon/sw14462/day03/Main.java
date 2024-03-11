@@ -10,6 +10,10 @@ public class Main {
         System.out.println("");
         System.out.println("Exercise 2_1b. Convert Fahrenheit to Celsius");
         Main.exercise2_1b();
+
+        System.out.println("");
+        System.out.println("Exercise 2_2. Move first word to the end of the sentence");
+        Main.exercise2_2();
     }
 
     public static void exercise2_1a() {
@@ -36,5 +40,15 @@ public class Main {
 
         double celsius = FahrenheitConverter.toCelsius(fahrenheit);
         System.out.printf("The temperature in Celsius is %.02f°C.\n", celsius);
+    }
+
+    public static void exercise2_2() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a sentence: ");
+        String sentence = scanner.nextLine();
+        String updatedSentence = WordShuffler.moveFirstWordToLast(sentence);
+
+        System.out.println(updatedSentence);
     }
 }
