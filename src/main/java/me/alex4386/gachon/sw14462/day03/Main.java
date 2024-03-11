@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Exercise 2_1. Read a four-digit integer and display one digit per line");
-        Main.exercise2_1();
+        System.out.println("Exercise 2_1a. Read a four-digit integer and display one digit per line");
+        Main.exercise2_1a();
 
         System.out.println("");
-        System.out.println("Exercise 2_2. Convert Fahrenheit to Celsius");
-        Main.exercise2_2();
+        System.out.println("Exercise 2_1b. Convert Fahrenheit to Celsius");
+        Main.exercise2_1b();
     }
 
-    public static void exercise2_1() {
+    public static void exercise2_1a() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a four-digit integer: ");
@@ -28,7 +28,7 @@ public class Main {
         }
     }
 
-    public static void exercise2_2() {
+    public static void exercise2_1b() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a temperature in Fahrenheit: ");
