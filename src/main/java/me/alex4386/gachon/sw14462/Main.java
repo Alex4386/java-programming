@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Main {
     public static String currentTarget = "";
+    public static boolean fallbackToLatest = true;
 
     public static Map<String, Class<?>> getAvailableTargetClassNames() {
         Map<String, Class<?>> classes = new TreeMap<>();
@@ -41,14 +42,14 @@ public class Main {
         try {
             mainMethod = klass.getMethod("main", String[].class);
         } catch (NoSuchMethodException e) {
-            System.out.println("Main method not found in the target class.");
+            System.err.println("Main method not found in the target class.");
             return;
         }
 
         try {
             mainMethod.invoke(null, (Object) args);
         } catch (InvocationTargetException e) {
-            System.out.println("Failed to invoke main method.");
+            System.err.println("Failed to invoke main method.");
             e.printStackTrace();
             return;
         } catch (IllegalAccessException e) {
@@ -83,10 +84,22 @@ public class Main {
             }
         }
 
+        if (fallbackToLatest) {
+            Map<String, Class<?>> classes = Main.getAvailableTargetClassNames();
+            List<String> keys = new ArrayList<>(classes.keySet());
+
+            if (keys.size() > 0) {
+                currentTarget = keys.get(keys.size() - 1);
+                klass = classes.get(currentTarget);
+                Main.launchGivenClass(klass, args);
+                return;
+            }
+        }
+
         if (System.console() != null) {
             askUserForLaunch(args);
         } else {
-            System.out.println("Console not available for loading specific class. Exiting.");
+            System.err.println("Console not available for loading specific class. Exiting.");
             System.exit(1);
         }
     }
