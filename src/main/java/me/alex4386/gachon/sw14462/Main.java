@@ -2,16 +2,13 @@ package me.alex4386.gachon.sw14462;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
-    public static String currentTarget = "day03";
+    public static String currentTarget = "";
 
     public static Map<String, Class<?>> getAvailableTargetClassNames() {
-        Map<String, Class<?>> classes = new HashMap<>();
+        Map<String, Class<?>> classes = new TreeMap<>();
 
         for (int i = 1; i <= 99; i++) {
             String className = String.format(Main.class.getPackage().getName() + ".day%02d.Main", i);
@@ -52,6 +49,7 @@ public class Main {
             mainMethod.invoke(null, (Object) args);
         } catch (InvocationTargetException e) {
             System.out.println("Failed to invoke main method.");
+            e.printStackTrace();
             return;
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -103,9 +101,12 @@ public class Main {
         }
 
         while (true) {
+            Scanner scanner = new Scanner(System.in);
+
             System.out.println("");
             System.out.print("Class name to launch (Enter \"exit\" to exit): ");
-            String input = System.console().readLine();
+            String input = scanner.nextLine();
+            scanner.close();
 
             if (input.equalsIgnoreCase("exit")) {
                 break;

@@ -37,6 +37,7 @@ public class Main {
 
         System.out.print("Enter a temperature in Fahrenheit: ");
         double fahrenheit = scanner.nextDouble();
+        scanner.close();
 
         double celsius = FahrenheitConverter.toCelsius(fahrenheit);
         System.out.printf("The temperature in Celsius is %.02f°C.\n", celsius);
@@ -47,6 +48,8 @@ public class Main {
 
         System.out.print("Enter a sentence: ");
         String sentence = scanner.nextLine();
+        scanner.close();
+
         String updatedSentence = WordShuffler.moveFirstWordToLast(sentence);
 
         System.out.println(updatedSentence);

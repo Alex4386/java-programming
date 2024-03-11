@@ -20,6 +20,8 @@ public class Main {
         System.out.print("Enter birth year:");
         String birthYearRaw = stdinScanner.nextLine();
 
+        stdinScanner.close();
+
         try {
             int birthYear = Integer.parseInt(birthYearRaw, 10);
 
@@ -41,6 +43,8 @@ public class Main {
         String rangeStartRaw = stdinScanner.nextLine();
         System.out.print("Enter ending integer:");
         String rangeEndRaw = stdinScanner.nextLine();
+
+        stdinScanner.close();
 
         try {
             int rangeStart = Integer.parseInt(rangeStartRaw, 10);
