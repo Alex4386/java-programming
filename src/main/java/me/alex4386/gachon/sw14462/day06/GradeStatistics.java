@@ -19,8 +19,8 @@ public class GradeStatistics extends IntegerStatistics {
             throw new IllegalArgumentException("Grade must be between 0 and 100");
         }
 
-        boolean isValid = super.add(value);
-        if (isValid) {
+        boolean isTerminated = super.add(value);
+        if (!isTerminated) {
             switch (value / 10) {
                 case 10:
                 case 9:

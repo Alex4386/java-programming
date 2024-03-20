@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 public class Main {
-    public static String currentTarget = "";
+    public static String currentTarget = "day06";
     public static boolean fallbackToLatest = true;
 
     public static Map<String, Class<?>> getAvailableTargetClassNames() {

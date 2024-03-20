@@ -130,7 +130,11 @@ public class Main {
             System.out.print("Enter the score: ");
             int score = getScanner().nextInt();
 
-            stats.add(score);
+            try {
+                stats.add(score);
+            } catch (IllegalArgumentException e) {
+                System.err.println(e.getMessage());
+            }
         }
 
         System.out.println("total count: "+stats.getCount());
