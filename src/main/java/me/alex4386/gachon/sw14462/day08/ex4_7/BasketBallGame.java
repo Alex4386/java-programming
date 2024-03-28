@@ -14,6 +14,10 @@ public class BasketBallGame {
         this.teamName2 = team2;
     }
 
+    public String[] getTeamNames() {
+        return new String[] { this.teamName1, this.teamName2 };
+    }
+
     private void addTeamScore(int teamIdx, int score) {
         if (teamIdx == 1) {
             this.teamScore1 += score;

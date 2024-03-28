@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 public class Main {
     public static String chainloadTarget = "ex4_7";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         String packageName = Main.class.getPackage().getName();
         String chainLoadTargetClass = packageName + "." + chainloadTarget + ".Main";
 
@@ -16,7 +16,7 @@ public class Main {
             System.err.println("Failed to find the chainload target class.");
             e.printStackTrace();
         } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
+            throw e.getTargetException();
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         } catch (NoSuchMethodException e) {

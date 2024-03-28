@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         BasketBallGame game = new BasketBallGame();
+        game.setTeamNames("Cats", "Dogs");
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -12,6 +14,10 @@ public class Main {
             String line = scanner.nextLine();
 
             String[] thisArgs = line.split(" ");
+            if (thisArgs.length < 2) {
+                System.err.println("Invalid input!");
+                continue;
+            }
 
             char team = thisArgs[0].charAt(0);
             int score;
@@ -40,9 +46,21 @@ public class Main {
 
             if (teamIdx > 0) {
                 addScore(game, teamIdx, score);
+            } else {
+                System.err.println("Invalid input!");
+                continue;
             }
 
+            String[] teams = game.getTeamNames();
+            int[] scores = game.getTeamScores();
+            System.out.print(teams[0]+" "+scores[0]+", "+teams[1]+" "+scores[1]+"; ");
 
+            String winningTeam = game.getWinningTeamName();
+            if (winningTeam != null) {
+                System.out.println(winningTeam+" are winning.");
+            } else {
+                System.out.println("Both teams are tied.");
+            }
         }
     }
 

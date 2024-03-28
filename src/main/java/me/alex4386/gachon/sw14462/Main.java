@@ -49,8 +49,7 @@ public class Main {
         try {
             mainMethod.invoke(null, (Object) args);
         } catch (InvocationTargetException e) {
-            System.err.println("Failed to invoke main method.");
-            e.printStackTrace();
+            e.getTargetException().printStackTrace();
             return;
         } catch (IllegalAccessException e) {
             e.printStackTrace();
