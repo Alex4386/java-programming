@@ -88,5 +88,8 @@ enum MovieMPAARating {
     public int getRatingId() {
         return this.ratingId;
     }
+    public boolean equals(MovieMPAARating other) {
+        return this.ratingId == other.getRatingId();
+    }
 }
 
