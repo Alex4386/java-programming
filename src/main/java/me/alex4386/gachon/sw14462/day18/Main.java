@@ -1,9 +1,9 @@
-package me.alex4386.gachon.sw14462.day17;
+package me.alex4386.gachon.sw14462.day18;
 
 import me.alex4386.gachon.sw14462.utils.Chainloader;
 
 public class Main {
-    public static String chainloadTarget = "ex9_1b";
+    public static String chainloadTarget = "ex9_4";
 
     public static void main(String[] args) throws Throwable {
         String packageName = Main.class.getPackage().getName();
